@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { ConfigProvider } from 'antd';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Totp from './pages/Totp';
+import Account from './pages/Account';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#222',
+          borderRadius: 5,
+        },
+      }}
+    >
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/totp" element={<Totp />} />
+            <Route path="/account" element={<Account />} />
+          </Routes>
+        </div>
+      </Router>
+    </ConfigProvider>
   );
 }
 

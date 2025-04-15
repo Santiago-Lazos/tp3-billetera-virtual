@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.login-container {
+  width: 350px;
+  height: 600px;
+  padding: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo-img, .qr-img {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.logo-img {
+  transform: translateX(5px);
+  margin-top: -15px;
+}
+
+.qr-img {
+  margin-top: -20px;
+}
+
+.auth-button {
+  height: 45px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.auth-input {
+  margin-bottom: 20px;
+  height: 40px;
+  width: 100%;
+}
+
+.auth-title, .saldo {
+  font-size: 30px;
+  color: #EFCD72;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 0px
+}
+
+.auth-subtitle, .auth-p-end, .auth-code, .saludo {
+  font-size: 16px;
+  color: #494949;
+  text-align: center;
+  font-weight: 500;
+}
+
+.saludo, .saldo {
+  text-align: left
+}
+
+.saldo {
+  margin-bottom: 0px
+}
+
+.auth-subtitle {
+  margin-bottom: 30px
+}
+
+.auth-p-end {
+  font-size: 14px;
+  margin-top: 30px
+}
+
+.auth-link {
+  text-decoration: none;
+  color: #494949
+}
+
+.auth-code {
+  font-size: 12px;
+  cursor: pointer;
+  user-select: all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-container {
+  padding: 10px;
+  border: 1px solid #EFCD72;
+  border-radius: 5px;
+  margin-bottom: 10px
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 90vw;
+    height: auto;
+    padding: 20px 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .logo-img, .qr-img {
+    width: 70%;
+    max-width: 200px;
   }
 }
