@@ -10,37 +10,41 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     const data = {
       username: alias,
       totpToken: codigo,
     };
-
-    axios.post('https://raulocoin.onrender.com/api/balance', data)
-      .then((response) => {
-        const res = response.data;
-        if (res.success && res.user) {
-          navigate('/account', {
-            state: {
-              name: res.user.name,
-              username: res.user.username,
-              balance: res.user.balance
-            }
-          });
-        } else {
-          alert('Credenciales incorrectas');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('Error al iniciar sesión');
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  
+    try {
+      await axios.post('https://raulocoin.onrender.com/api/verify-totp-setup', data);
+    } catch (error) {
+      console.warn("La verificación TOTP falló, pero se continuará con el login.");
+    }
+  
+    try {
+      const response = await axios.post('https://raulocoin.onrender.com/api/balance', data);
+      const res = response.data;
+      if (res.success && res.user) {
+        navigate('/account', {
+          state: {
+            name: res.user.name,
+            username: res.user.username,
+            balance: res.user.balance,
+          },
+        });
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Error al iniciar sesión');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
