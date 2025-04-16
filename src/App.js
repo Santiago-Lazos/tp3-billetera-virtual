@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Totp from './pages/Totp';
 import Account from './pages/Account';
+import VerifyAccount from './pages/VerifyAccount';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/totp" element={<Totp />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/verify-account" element={<VerifyAccount />} />
           </Routes>
         </div>
       </Router>
