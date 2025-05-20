@@ -13,27 +13,41 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
+
     const data = {
       username: alias,
       totpToken: codigo,
     };
-  
+
     try {
       const response = await axios.post('https://raulocoin.onrender.com/api/user-details', data);
       const res = response.data;
-  
+
       if (res.success && res.user) {
-        navigate('/account', {
-          state: {
-            name: res.user.name,
-            username: res.user.username,
-            balance: res.user.balance,
-          },
-        });
+        // Guardar datos de usuario en localStorage
+        localStorage.setItem('userData', JSON.stringify({
+          name: res.user.name,
+          username: res.user.username,
+          balance: res.user.balance,
+        }));
+
+        // Pedir historial de transacciones
+        const transResponse = await axios.post('https://raulocoin.onrender.com/api/transactions', data);
+        const transRes = transResponse.data;
+
+        if (transRes.success) {
+          localStorage.setItem('transactions', JSON.stringify(transRes.transactions));
+        } else {
+          // Si no se pudo traer las transacciones, igual seguimos pero sin historial
+          localStorage.setItem('transactions', JSON.stringify([]));
+        }
+
+        // Redirigir a account sin state
+        navigate('/account');
       } else {
         alert('Credenciales incorrectas');
       }
+
     } catch (error) {
       if (
         error.response &&
@@ -49,8 +63,8 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
-  };  
-  
+  };
+
   return (
     <div className="login-container">
       <img

@@ -6,6 +6,10 @@ import Register from './pages/Register';
 import Totp from './pages/Totp';
 import Account from './pages/Account';
 import VerifyAccount from './pages/VerifyAccount';
+import SearchUsers from './pages/SearchUsers';
+import VerifyTotp from './pages/VerifyTotp';
+import Transfer from './pages/Transfer';
+import Receipt from './pages/Receipt';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
             <Route path="/totp" element={<Totp />} />
             <Route path="/account" element={<Account />} />
             <Route path="/verify-account" element={<VerifyAccount />} />
+            <Route path="/search-users" element={<SearchUsers />} />
+            <Route path="/verify-totp" element={<VerifyTotp />} />
+            <Route path="/transfer" element={<Transfer />} />
+            <Route path="/comprobante" element={<Receipt />} />
           </Routes>
         </div>
       </Router>
