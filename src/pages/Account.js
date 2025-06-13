@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, List, Card } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Account = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth0();
 
   const userData = JSON.parse(localStorage.getItem('userData')) || {};
   const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -14,7 +16,7 @@ const Account = () => {
   const handleLogout = () => {
     localStorage.removeItem('userData');
     localStorage.removeItem('transactions');
-    navigate('/');
+    logout({ returnTo: window.location.origin }); // 👈 cierra sesión en Auth0 también
   };
 
   const formatDate = (timestamp) => {

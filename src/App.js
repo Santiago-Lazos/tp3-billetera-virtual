@@ -10,6 +10,8 @@ import SearchUsers from './pages/SearchUsers';
 import VerifyTotp from './pages/VerifyTotp';
 import Transfer from './pages/Transfer';
 import Receipt from './pages/Receipt';
+import PrivateRoute from './components/PrivateRoute';
+import Logout from './pages/Logout';  // 👈 agregado
 
 function App() {
   return (
@@ -24,15 +26,68 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
+            {/* Rutas públicas */}
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/totp" element={<Totp />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/verify-account" element={<VerifyAccount />} />
-            <Route path="/search-users" element={<SearchUsers />} />
-            <Route path="/verify-totp" element={<VerifyTotp />} />
-            <Route path="/transfer" element={<Transfer />} />
-            <Route path="/comprobante" element={<Receipt />} />
+            <Route path="/logout" element={<Logout />} /> {/* 👈 nueva ruta */}
+
+            {/* Rutas protegidas */}
+            <Route
+              path="/totp"
+              element={
+                <PrivateRoute>
+                  <Totp />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/account"
+              element={
+                <PrivateRoute>
+                  <Account />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/verify-account"
+              element={
+                <PrivateRoute>
+                  <VerifyAccount />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/search-users"
+              element={
+                <PrivateRoute>
+                  <SearchUsers />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/verify-totp"
+              element={
+                <PrivateRoute>
+                  <VerifyTotp />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/transfer"
+              element={
+                <PrivateRoute>
+                  <Transfer />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/comprobante"
+              element={
+                <PrivateRoute>
+                  <Receipt />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </div>
       </Router>
