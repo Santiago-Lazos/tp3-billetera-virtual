@@ -47,12 +47,6 @@ const PrivateRoute = ({ children }) => {
 
           localStorage.setItem('userData', JSON.stringify(response.user));
 
-          /* if (response.needsTotpSetup) {
-            navigate('/verify-account', {
-              state: { alias: response.user.username },
-            });
-          } */
-
 
           setAuthDone(true);
 console.log(response.user);
@@ -60,8 +54,8 @@ console.log(response.user);
             console.log("Entro");
             navigate("/Account");
         } else {
-/*             que valla a la pagina de verificar
- */        }
+            navigate("/VerifyAccount");
+     }
         } catch (error) {
           console.error('Error autenticando con Auth0:', error);
         }
