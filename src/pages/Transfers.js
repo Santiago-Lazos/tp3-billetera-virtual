@@ -12,7 +12,9 @@ const Transfers = () => {
 
   const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
-  const filteredTransactions = transactions.filter(item => {
+  const filteredTransactions = transactions
+  .filter(item => item.type !== 'profile_update') // 👈 primero quitamos los profile_update
+  .filter(item => {
     const aliasMatch =
       item.toUsername?.toLowerCase().includes(filter.toLowerCase()) ||
       item.fromUsername?.toLowerCase().includes(filter.toLowerCase()) ||
@@ -23,6 +25,7 @@ const Transfers = () => {
 
     return aliasMatch && typeMatch;
   });
+
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp * 1000);

@@ -128,21 +128,22 @@ const Account = () => {
       </Button>
 
       <List
-        dataSource={transactions.slice(0, 3)}
-        renderItem={item => (
-          <List.Item key={item.id}>
-            <Card style={{ width: '100%' }}>
-              <p><strong>Fecha:</strong> {formatDate(item.createdAt)}</p>
-              <p><strong>Tipo:</strong> {item.type}</p>
-              <p><strong>Monto:</strong> R$ {item.amount}</p>
-              <p><strong>Para:</strong> {item.toName || 'N/A'}</p>
-              <p><strong>De:</strong> {item.fromName || 'N/A'}</p>
-              {item.description && <p><strong>Descripción:</strong> {item.description}</p>}
-              <Button type="link" onClick={() => downloadTransfer(item)}>Descargar</Button>
-            </Card>
-          </List.Item>
-        )}
-      />
+  dataSource={transactions.filter(item => item.type !== 'profile_update').slice(0, 3)}
+  renderItem={item => (
+    <List.Item key={item.id}>
+      <Card style={{ width: '100%' }}>
+        <p><strong>Fecha:</strong> {formatDate(item.createdAt)}</p>
+        <p><strong>Tipo:</strong> {item.type}</p>
+        <p><strong>Monto:</strong> R$ {item.amount}</p>
+        <p><strong>Para:</strong> {item.toName || 'N/A'}</p>
+        <p><strong>De:</strong> {item.fromName || 'N/A'}</p>
+        {item.description && <p><strong>Descripción:</strong> {item.description}</p>}
+        <Button type="link" onClick={() => downloadTransfer(item)}>Descargar</Button>
+      </Card>
+    </List.Item>
+  )}
+/>
+
     </div>
   );
 };
