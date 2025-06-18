@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Input, Button, message } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { getBalance, getTransactions } from '../services/authService';
 
 const Transfer = () => {
   const [amount, setAmount] = useState('');
@@ -14,7 +15,7 @@ const Transfer = () => {
   const operationToken = location.state?.operationToken;
 
   const userData = JSON.parse(localStorage.getItem('userData')) || {};
-  const { username } = userData;
+  const { username, email } = userData;
 
   if (!receiver || !operationToken) {
     message.error('Faltan datos de la operación');
@@ -42,36 +43,21 @@ const Transfer = () => {
       const res = response.data;
 
       if (res.success) {
-        // Actualizar saldo en localStorage
-        const newBalance = res.transfer.from.newBalance;
-        localStorage.setItem('userData', JSON.stringify({
-          ...userData,
-          balance: newBalance
-        }));
+        const balanceRes = await getBalance(email);
+        if (balanceRes.success) {
+          localStorage.setItem('userData', JSON.stringify({
+            ...userData,
+            balance: balanceRes.user.balance
+          }));
+        }
 
-        // Actualizar historial local con la nueva transferencia
-        let historialActual = JSON.parse(localStorage.getItem('transactions')) || [];
+        const transactionsRes = await getTransactions(email);
+        if (transactionsRes.success) {
+          localStorage.setItem('transactions', JSON.stringify(transactionsRes.transactions));
+        }
 
-        historialActual.unshift({
-          id: Date.now().toString(), // id temporal
-          amount: -res.transfer.amount,
-          description: res.transfer.description,
-          createdAt: res.transfer.timestamp,
-          fromUsername: username,
-          fromName: res.transfer.from.name,
-          toUsername: res.transfer.to.username,
-          toName: res.transfer.to.name,
-          type: "sent"
-        });
+        navigate('/comprobante', { state: { transfer: res.transfer } });
 
-        localStorage.setItem('transactions', JSON.stringify(historialActual));
-
-        // Redirigir al comprobante con los datos de la transferencia
-        navigate('/comprobante', {
-          state: {
-            transfer: res.transfer
-          }
-        });
       } else {
         message.error(res.message);
       }
@@ -86,28 +72,37 @@ const Transfer = () => {
 
   return (
     <div className="login-container">
-      <h1>Transferir a {receiver.name}</h1>
+      <h2 className="auth-title">Transferir a</h2>
+      <p className="auth-subtitle">{receiver.name}</p>
 
       <Input
-        placeholder="Monto"
+        className="auth-input"
+        placeholder="Monto en R$"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
         type="number"
-        style={{ marginBottom: 20 }}
       />
 
       <Input
+        className="auth-input"
         placeholder="Descripción (opcional)"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        style={{ marginBottom: 20 }}
       />
 
-      <Button type="primary" onClick={handleTransfer} loading={loading}>
+      <Button
+        type="primary"
+        className="auth-button"
+        onClick={handleTransfer}
+        loading={loading}
+      >
         Confirmar Transferencia
       </Button>
 
-      <Button onClick={() => navigate('/account')} style={{ marginTop: 20 }}>
+      <Button
+        onClick={() => navigate('/account')}
+        style={{ marginTop: 20 }}
+      >
         Cancelar
       </Button>
     </div>
