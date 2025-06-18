@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { auth0Authenticate } from '../services/authService';
-import { useNavigate } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { auth0Authenticate } from "../services/authService";
+import { useNavigate } from "react-router-dom";
+import { VerifyAccount } from "../pages/verify-account";
 const PrivateRoute = ({ children }) => {
   const {
     isAuthenticated,
@@ -30,10 +30,10 @@ const PrivateRoute = ({ children }) => {
               aud: idTokenClaims.aud,
               iat: idTokenClaims.iat,
               exp: idTokenClaims.exp,
-              email: user.email || 'santiago.daniel.lazos@gmail.com',
+              email: user.email,
               name: user.name,
               picture: user.picture,
-              nickname: user.nickname || ""
+              nickname: user.nickname || "",
             },
             auth0_tokens: {
               access_token: accessToken,
@@ -41,23 +41,22 @@ const PrivateRoute = ({ children }) => {
             },
           };
 
-          console.log('Datos a enviar a la API:', data);
+          console.log("Datos a enviar a la API:", data);
           const response = await auth0Authenticate(data);
-          console.log('Respuesta del backend:', response);
+          console.log("Respuesta del backend:", response);
 
-          localStorage.setItem('userData', JSON.stringify(response.user));
-
+          localStorage.setItem("userData", JSON.stringify(response.user));
 
           setAuthDone(true);
-console.log(response.user);
-                  if (response.user.isVerified === true) {
+          console.log(response.user);
+          if (response.user.isVerified === true) {
             console.log("Entro");
             navigate("/Account");
-        } else {
-            navigate("/VerifyAccount");
-     }
+          } else {
+            navigate("/verify-account");
+          }
         } catch (error) {
-          console.error('Error autenticando con Auth0:', error);
+          console.error("Error autenticando con Auth0:", error);
         }
       }
     };
@@ -67,7 +66,7 @@ console.log(response.user);
     } else if (!isLoading && !isAuthenticated) {
       loginWithRedirect({
         authorizationParams: {
-          prompt: 'login',
+          prompt: "login",
         },
       });
     }
@@ -79,7 +78,7 @@ console.log(response.user);
     getAccessTokenSilently,
     getIdTokenClaims,
     navigate,
-    authDone
+    authDone,
   ]);
 
   if (isLoading || !isAuthenticated) {

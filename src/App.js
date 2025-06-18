@@ -1,24 +1,26 @@
-import './App.css';
-import { ConfigProvider } from 'antd';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Totp from './pages/Totp';
-import Account from './pages/Account';
-import VerifyAccount from './pages/VerifyAccount';
-import SearchUsers from './pages/SearchUsers';
-import VerifyTotp from './pages/VerifyTotp';
-import Transfer from './pages/Transfer';
-import Receipt from './pages/Receipt';
-import PrivateRoute from './components/PrivateRoute';
-import Logout from './pages/Logout';  // 👈 agregado
+import "./App.css";
+import { ConfigProvider } from "antd";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Totp from "./pages/Totp";
+import Account from "./pages/Account";
+import VerifyAccount from "./pages/verify-account";
+import SearchUsers from "./pages/SearchUsers";
+import VerifyTotp from "./pages/VerifyTotp";
+import Transfer from "./pages/Transfer";
+import Receipt from "./pages/Receipt";
+import PrivateRoute from "./components/PrivateRoute";
+import Logout from "./pages/Logout"; // 👈 agregado
+import TotpSetupForm from "./pages/TotpSetupForm";
+import TotpSetupResult from "./pages/TotpSetupResult";
 
 function App() {
   return (
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#222',
+          colorPrimary: "#222",
           borderRadius: 5,
         },
       }}
@@ -29,8 +31,8 @@ function App() {
             {/* Rutas públicas */}
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} /> {/* 👈 nueva ruta */}
-
+            <Route path="/logout" element={<Logout />} />
+            {/* 👈 nueva ruta */}
             {/* Rutas protegidas */}
             <Route
               path="/totp"
@@ -85,6 +87,23 @@ function App() {
               element={
                 <PrivateRoute>
                   <Receipt />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/totp-setup"
+              element={
+                <PrivateRoute>
+                  <TotpSetupForm />
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/totp-result"
+              element={
+                <PrivateRoute>
+                  <TotpSetupResult />
                 </PrivateRoute>
               }
             />
