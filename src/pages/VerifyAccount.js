@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 
 const VerifyAccount = () => {
   const navigate = useNavigate();
-
-  // Leemos userData de localStorage
   const userData = JSON.parse(localStorage.getItem('userData')) || {};
 
-  // Alias tomado de userData.username
-  const [alias, setAlias] = useState(userData.username || '');
+  const [alias] = useState(userData.username || '');
   const [codigo, setCodigo] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -24,35 +21,31 @@ const VerifyAccount = () => {
     };
 
     try {
-      const verifyResponse = await axios.post(
+      const response = await axios.post(
         'https://raulocoin.onrender.com/api/verify-totp-setup',
         data
       );
-      const verifyRes = verifyResponse.data;
+      const res = response.data;
 
-      if (verifyRes.success) {
-        const userResponse = await axios.post(
-          'https://raulocoin.onrender.com/api/user-details',
-          data
-        );
-        const userRes = userResponse.data;
+      if (res.success) {
+        // Guardar datos actualizados en localStorage
+        localStorage.setItem('userData', JSON.stringify(res.user));
 
-        if (userRes.success && userRes.user) {
-          navigate('/account', {
-            state: {
-              name: userRes.user.name,
-              username: userRes.user.username,
-              balance: userRes.user.balance,
-            },
-          });
-        } else {
-          alert('No se pudieron obtener los datos del usuario.');
-        }
+        message.success(res.message || 'Cuenta verificada correctamente.');
+
+        // Redirigir a /account con los datos
+        navigate('/account', {
+          state: {
+            name: res.user.name,
+            username: res.user.username,
+            balance: res.user.balance,
+          },
+        });
       } else {
-        alert('Código TOTP incorrecto.');
+        message.error(res.message || 'Código TOTP incorrecto.');
       }
     } catch (error) {
-      alert('Error al verificar el código TOTP.');
+      message.error('Error al verificar el código TOTP.');
     } finally {
       setLoading(false);
     }

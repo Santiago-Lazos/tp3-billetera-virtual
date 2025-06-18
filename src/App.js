@@ -10,8 +10,11 @@ import SearchUsers from './pages/SearchUsers';
 import VerifyTotp from './pages/VerifyTotp';
 import Transfer from './pages/Transfer';
 import Receipt from './pages/Receipt';
+import Logout from './pages/Logout';
+import Transfers from './pages/Transfers';  // 👈 acá lo importamos
 import PrivateRoute from './components/PrivateRoute';
-import Logout from './pages/Logout';  // 👈 agregado
+import EditProfile from './pages/EditProfile'; // Importalo
+
 
 function App() {
   return (
@@ -29,7 +32,9 @@ function App() {
             {/* Rutas públicas */}
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} /> {/* 👈 nueva ruta */}
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/verify-account" element={<VerifyAccount />} />   
+
 
             {/* Rutas protegidas */}
             <Route
@@ -45,14 +50,6 @@ function App() {
               element={
                 <PrivateRoute>
                   <Account />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/verify-account"
-              element={
-                <PrivateRoute>
-                  <VerifyAccount />
                 </PrivateRoute>
               }
             />
@@ -81,6 +78,14 @@ function App() {
               }
             />
             <Route
+              path="/transfers"
+              element={
+                <PrivateRoute>
+                  <Transfers />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="/comprobante"
               element={
                 <PrivateRoute>
@@ -88,6 +93,15 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="/edit-profile"
+              element={
+                <PrivateRoute>
+                  <EditProfile />
+                </PrivateRoute>
+              }
+            />
+
           </Routes>
         </div>
       </Router>
