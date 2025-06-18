@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import "./App.css";
 import { ConfigProvider } from "antd";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,30 +9,13 @@ import VerifyAccount from "./pages/verify-account";
 import SearchUsers from "./pages/SearchUsers";
 import VerifyTotp from "./pages/VerifyTotp";
 import Transfer from "./pages/Transfer";
+import Transfers from "./pages/Transfers";
 import Receipt from "./pages/Receipt";
 import PrivateRoute from "./components/PrivateRoute";
 import Logout from "./pages/Logout"; // 👈 agregado
 import TotpSetupForm from "./pages/TotpSetupForm";
 import TotpSetupResult from "./pages/TotpSetupResult";
-=======
-import './App.css';
-import { ConfigProvider } from 'antd';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Totp from './pages/Totp';
-import Account from './pages/Account';
-import VerifyAccount from './pages/VerifyAccount';
-import SearchUsers from './pages/SearchUsers';
-import VerifyTotp from './pages/VerifyTotp';
-import Transfer from './pages/Transfer';
-import Receipt from './pages/Receipt';
-import Logout from './pages/Logout';
-import Transfers from './pages/Transfers';  // 👈 acá lo importamos
-import PrivateRoute from './components/PrivateRoute';
-import EditProfile from './pages/EditProfile'; // Importalo
-
->>>>>>> 9d79eb663dc8ce2c1c7011f3d8a97f0f919d0d86
+import EditProfile from "./pages/EditProfile"; // Importalo
 
 function App() {
   return (
@@ -52,13 +34,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<Logout />} />
-<<<<<<< HEAD
-            {/* 👈 nueva ruta */}
-=======
-            <Route path="/verify-account" element={<VerifyAccount />} />   
+            <Route path="/verify-account" element={<VerifyAccount />} />
 
-
->>>>>>> 9d79eb663dc8ce2c1c7011f3d8a97f0f919d0d86
             {/* Rutas protegidas */}
             <Route
               path="/totp"
@@ -117,22 +94,21 @@ function App() {
               }
             />
             <Route
-<<<<<<< HEAD
               path="/totp-setup"
               element={
                 <PrivateRoute>
                   <TotpSetupForm />
-=======
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="/edit-profile"
               element={
                 <PrivateRoute>
                   <EditProfile />
->>>>>>> 9d79eb663dc8ce2c1c7011f3d8a97f0f919d0d86
                 </PrivateRoute>
               }
             />
-
-<<<<<<< HEAD
             <Route
               path="/totp-result"
               element={
@@ -141,8 +117,6 @@ function App() {
                 </PrivateRoute>
               }
             />
-=======
->>>>>>> 9d79eb663dc8ce2c1c7011f3d8a97f0f919d0d86
           </Routes>
         </div>
       </Router>
