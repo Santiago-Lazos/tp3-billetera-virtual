@@ -1,0 +1,164 @@
+body {
+  background-color: #111;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.login-container {
+  width: 360px;
+  max-width: 95%;
+  padding: 30px;
+  background-color: #ddd;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.logo-img, .qr-img {
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.logo-img {
+  width: 180px;
+  margin-top: -10px;
+}
+
+.qr-img {
+  width: 220px;
+  margin-top: -15px;
+}
+
+.auth-button {
+  height: 48px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #0ab220;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+/* .auth-button:hover {
+  background-color: #4e2be9;
+}
+ */
+.auth-input {
+  margin-bottom: 20px;
+  height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  outline: none;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.auth-title, .saldo {
+  font-size: 28px;
+  color: #0ab220;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.auth-subtitle, .auth-p-end, .auth-code, .saludo {
+  font-size: 15px;
+  color: #555;
+  text-align: center;
+  font-weight: 500;
+}
+
+.saludo, .saldo {
+  text-align: left;
+}
+
+.saldo {
+  margin-bottom: 0;
+}
+
+.auth-subtitle {
+  margin-bottom: 24px;
+}
+
+.auth-p-end {
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.auth-link {
+  text-decoration: none;
+  color: #142B83;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.auth-link:hover {
+  color: #0f0b01;
+}
+
+.auth-code {
+  font-size: 12px;
+  cursor: pointer;
+  user-select: all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #888;
+}
+
+.user-container {
+  padding: 10px 20px;
+  border: 1.5px solid #0f0b01;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background-color: #fcfcfc;
+}
+
+.icon-container {
+  color: #0f0b01;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #0f0b01;
+  transition: color 0.3s;
+}
+
+.logout-icon:hover {
+  color: #d7ac45;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 90vw;
+    padding: 20px 16px;
+  }
+
+  .auth-input, .auth-button {
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .logo-img, .qr-img {
+    width: 70%;
+    max-width: 200px;
+  }
+}
