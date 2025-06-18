@@ -35,6 +35,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/verify-account" element={<VerifyAccount />} />
+            <Route path="/totp-setup" element={<TotpSetupForm />} />
+            <Route path="/totp-result" element={<TotpSetupResult />} />
 
             {/* Rutas protegidas */}
             <Route
@@ -93,27 +95,12 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              path="/totp-setup"
-              element={
-                <PrivateRoute>
-                  <TotpSetupForm />
-                </PrivateRoute>
-              }
-            />
+
             <Route
               path="/edit-profile"
               element={
                 <PrivateRoute>
                   <EditProfile />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/totp-result"
-              element={
-                <PrivateRoute>
-                  <TotpSetupResult />
                 </PrivateRoute>
               }
             />

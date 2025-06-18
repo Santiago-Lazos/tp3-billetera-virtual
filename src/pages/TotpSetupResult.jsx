@@ -56,39 +56,54 @@ const TotpSetupResult = () => {
         textAlign: "center",
       }}
     >
-      <Title level={3}>Activá tu doble factor (TOTP)</Title>
+      <div className="login-container">
+        <img src="/assets/raulCoin.png" alt="raulCoin" className="logo-img" />
+        <h1 className="auth-title">Ingresá tus datos para generar TOTP</h1>
 
-      {loading ? (
-        <p>Cargando código...</p>
-      ) : (
-        <>
-          {qrCodeUrl && (
-            <Space
-              direction="vertical"
-              style={{ width: "100%", textAlign: "center" }}
+        {loading ? (
+          <p>Cargando código...</p>
+        ) : (
+          <>
+            {qrCodeUrl && (
+              <Space
+                direction="vertical"
+                style={{ width: "100%", textAlign: "center" }}
+              >
+                <img
+                  src={qrCodeUrl}
+                  alt="Código QR TOTP"
+                  style={{ width: 200, height: 200, margin: "auto" }}
+                />
+                <Paragraph>
+                  <Text strong>Código manual:</Text>{" "}
+                  <Text copyable>{manualCode}</Text>
+                </Paragraph>
+                <Paragraph>
+                  <Text type="secondary">{instructions}</Text>
+                </Paragraph>
+              </Space>
+            )}
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="auth-button"
+              onClick={() => navigate("/totp-setup")}
+              style={{ marginTop: 20 }}
             >
-              <img
-                src={qrCodeUrl}
-                alt="Código QR TOTP"
-                style={{ width: 200, height: 200, margin: "auto" }}
-              />
-              <Paragraph>
-                <Text strong>Código manual:</Text>{" "}
-                <Text copyable>{manualCode}</Text>
-              </Paragraph>
-              <Paragraph>
-                <Text type="secondary">{instructions}</Text>
-              </Paragraph>
-            </Space>
-          )}
-          <Button
-            onClick={() => navigate("/totp-setup")}
-            style={{ marginTop: 20 }}
-          >
-            Volver
-          </Button>
-        </>
-      )}
+              Volver
+            </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="auth-button"
+              onClick={() => navigate("/verify-account")}
+              style={{ marginTop: 20 }}
+            >
+              Ya escaneé el código, verificar ahora
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

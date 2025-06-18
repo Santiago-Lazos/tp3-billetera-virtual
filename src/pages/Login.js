@@ -96,8 +96,8 @@ const Login = () => {
       </Button>
 
       <p className="auth-p-end">
-        <a className="auth-link" href="/register">
-          Crear nueva cuenta
+        <a className="auth-link" href="/totp-setup">
+          Recuperar TOTP
         </a>
       </p>
     </div>

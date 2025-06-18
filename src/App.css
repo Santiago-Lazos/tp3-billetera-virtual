@@ -1,6 +1,6 @@
 body {
   background-color: #111;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,8 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.logo-img, .qr-img {
+.logo-img,
+.qr-img {
   height: auto;
   display: block;
   margin: 0 auto;
@@ -49,6 +50,21 @@ body {
   letter-spacing: 1px;
 }
 
+.auth-button1 {
+  height: 48px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #0ab220;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
 /* .auth-button:hover {
   background-color: #4e2be9;
 }
@@ -67,7 +83,21 @@ body {
   font-weight: 500;
 }
 
-.auth-title, .saldo {
+.auth-input1 {
+  height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  outline: none;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.auth-title,
+.saldo {
   font-size: 28px;
   color: #0ab220;
   text-align: center;
@@ -75,14 +105,18 @@ body {
   margin-top: 0;
 }
 
-.auth-subtitle, .auth-p-end, .auth-code, .saludo {
+.auth-subtitle,
+.auth-p-end,
+.auth-code,
+.saludo {
   font-size: 15px;
   color: #555;
   text-align: center;
   font-weight: 500;
 }
 
-.saludo, .saldo {
+.saludo,
+.saldo {
   text-align: left;
 }
 
@@ -101,7 +135,7 @@ body {
 
 .auth-link {
   text-decoration: none;
-  color: #142B83;
+  color: #142b83;
   font-weight: 500;
   transition: color 0.3s;
 }
@@ -152,12 +186,14 @@ body {
     padding: 20px 16px;
   }
 
-  .auth-input, .auth-button {
+  .auth-input,
+  .auth-button {
     height: 52px;
     font-size: 16px;
   }
 
-  .logo-img, .qr-img {
+  .logo-img,
+  .qr-img {
     width: 70%;
     max-width: 200px;
   }
