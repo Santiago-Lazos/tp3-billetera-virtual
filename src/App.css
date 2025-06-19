@@ -1,6 +1,6 @@
 body {
   background-color: #0f0f0f;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,8 @@ body {
   transition: all 0.3s ease;
 }
 
-.logo-img, .qr-img {
+.logo-img,
+.qr-img {
   height: auto;
   display: block;
   margin: 0 auto;
@@ -85,7 +86,10 @@ body {
   margin-bottom: 10px;
 }
 
-.auth-subtitle, .auth-p-end, .auth-code, .saludo {
+.auth-subtitle,
+.auth-p-end,
+.auth-code,
+.saludo {
   font-size: 15px;
   color: #aaa;
   text-align: center;
@@ -200,6 +204,12 @@ body {
   font-weight: 500;
 }
 
+.ant-typography {
+  color: #fff;
+}
+.ant-typography-secondary {
+  color: #fff;
+}
 .ant-input {
   background-color: #2c2c2c !important;
   color: #eee !important;
@@ -240,21 +250,21 @@ body {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
-
 @media (max-width: 480px) {
   .login-container {
     width: 92vw;
     padding: 24px 18px;
   }
 
-  .auth-input, .auth-button {
+  .auth-input,
+  .auth-button {
     height: 50px;
     font-size: 16px;
   }
 
-  .logo-img, .qr-img {
+  .logo-img,
+  .qr-img {
     width: 70%;
     max-width: 200px;
   }
 }
-

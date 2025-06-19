@@ -72,14 +72,18 @@ const TotpSetupResult = () => {
                 <img
                   src={qrCodeUrl}
                   alt="Código QR TOTP"
-                  style={{ width: 200, height: 200, margin: "auto" }}
+                  style={{
+                    width: 200,
+                    height: 200,
+                    margin: "auto",
+                  }}
                 />
                 <Paragraph>
                   <Text strong>Código manual:</Text>{" "}
                   <Text copyable>{manualCode}</Text>
                 </Paragraph>
                 <Paragraph>
-                  <Text type="secondary">{instructions}</Text>
+                  <Text className="auth-typography">{instructions}</Text>
                 </Paragraph>
               </Space>
             )}
