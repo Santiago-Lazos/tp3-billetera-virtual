@@ -30,11 +30,11 @@ const Receipt = () => {
         <p><strong>Fecha:</strong> {formatDate(transfer.timestamp)}</p>
       </Card>
 
-      <Button type="primary" onClick={() => navigate('/search-users')}>
+      <Button type="primary" onClick={() => navigate('/search-users')} className='auth-button'>
         Hacer otra transferencia
       </Button>
 
-      <Button onClick={() => navigate('/account')} style={{ marginTop: 20 }}>
+      <Button onClick={() => navigate('/account')} style={{ marginTop: 20 }} className='auth-button'>
         Volver al inicio
       </Button>
     </div>
