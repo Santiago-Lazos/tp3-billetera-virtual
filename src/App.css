@@ -211,18 +211,19 @@ body {
   color: #fff;
 }
 .ant-input {
-  background-color: #2c2c2c !important;
-  color: #eee !important;
+  background-color: #ddd !important;
+  color: #000 !important;
   border: none !important;
   border-radius: 10px !important;
   height: 44px;
   padding: 0 14px;
   transition: all 0.3s ease;
+  font-size: 15px;
 }
 
 .ant-input:focus {
   border: 1.5px solid #0ab220 !important;
-  background-color: #262626 !important;
+  background-color: #ddd !important;
   box-shadow: none !important;
 }
 
@@ -248,6 +249,10 @@ body {
   color: #eee !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.ant-typography {
+  color: #fff;
 }
 
 @media (max-width: 480px) {

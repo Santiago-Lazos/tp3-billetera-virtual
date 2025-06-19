@@ -100,6 +100,7 @@ const Transfer = () => {
       </Button>
 
       <Button
+      className='auth-button'
         onClick={() => navigate('/account')}
         style={{ marginTop: 20 }}
       >

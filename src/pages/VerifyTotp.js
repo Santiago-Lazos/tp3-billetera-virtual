@@ -71,7 +71,7 @@ const VerifyTotp = () => {
         Validar y continuar
       </Button>
 
-      <Button onClick={() => navigate('/search-users')} style={{ marginTop: 20 }}>
+      <Button onClick={() => navigate('/search-users')} style={{ marginTop: 20, marginLeft: 130}}>
         Volver
       </Button>
     </div>
