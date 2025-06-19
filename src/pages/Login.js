@@ -24,6 +24,9 @@ const Login = () => {
       },
     });
   };
+    const Recover = () => {
+      navigate("/totp-setup");
+  };
 
   useEffect(() => {
     const fetchTokens = async () => {
@@ -39,7 +42,7 @@ const Login = () => {
               aud: idTokenClaims.aud,
               iat: idTokenClaims.iat,
               exp: idTokenClaims.exp,
-              email: user.email || "santiago.daniel.lazos@gmail.com",
+              email: user.email,
               name: user.name,
               picture: user.picture,
               nickname: user.nickname || "",
@@ -91,13 +94,14 @@ const Login = () => {
         ¡Bienvenido de nuevo, te hemos echado de menos!
       </p>
 
-      <Button type="primary" className="auth-button" onClick={handleLoginClick}>
+      <Button type="primary" className="auth-button1" onClick={handleLoginClick}>
         Ingresar
       </Button>
-
+      <Button type="primary" className="auth-button" onClick={Recover}>
+        Recuperar TOTP
+      </Button>
       <p className="auth-p-end">
         <a className="auth-link" href="/totp-setup">
-          Recuperar TOTP
         </a>
       </p>
     </div>
