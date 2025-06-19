@@ -42,7 +42,7 @@ const Login = () => {
               aud: idTokenClaims.aud,
               iat: idTokenClaims.iat,
               exp: idTokenClaims.exp,
-              email: user.email,
+              email: user.email || "santiago.daniel.lazos@gmail.com",
               name: user.name,
               picture: user.picture,
               nickname: user.nickname || "",
@@ -59,7 +59,6 @@ const Login = () => {
 
           localStorage.setItem("userData", JSON.stringify(response.user));
 
-          // ✔️ Redirigir según isVerified
           if (response.user.isVerified) {
             navigate("/account");
           } else {
@@ -94,7 +93,7 @@ const Login = () => {
         ¡Bienvenido de nuevo, te hemos echado de menos!
       </p>
 
-      <Button type="primary" className="auth-button1" onClick={handleLoginClick}>
+      <Button type="primary" className="auth-button" onClick={handleLoginClick} style={{marginBottom: 15}}>
         Ingresar
       </Button>
       <Button type="primary" className="auth-button" onClick={Recover}>

@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Form, Input, Button, message, Card } from 'antd';
 import { editUserProfile, changeUserEmail } from '../services/authService';
 
 const EditProfile = () => {
+    const navigate = useNavigate();
+  
   const userData = JSON.parse(localStorage.getItem('userData')) || {};
   const { email: currentEmail, name: currentName, username: currentUsername } = userData;
 
@@ -75,7 +79,9 @@ const EditProfile = () => {
   };
 
   return (
+    
     <Card title={<div className="edit-profile-title">Editar Perfil</div>} className="edit-profile-card" style={{ maxWidth: 400, margin: 'auto', marginTop: 50 }}>
+      
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item label="Nombre" name="name" rules={[{ max: 100, message: 'Máximo 100 caracteres.' }]}>
           <Input placeholder="Nombre completo" />
@@ -109,6 +115,12 @@ const EditProfile = () => {
           </Button>
         </Form.Item>
       </Form>
+      <Button
+              onClick={() => navigate('/account')}
+              style={{ marginTop: 20 }}
+            >
+              Volver
+            </Button>
     </Card>
   );
 };

@@ -23,6 +23,8 @@ const VerifyAccount = () => {
       totpToken: codigo,
     };
 
+
+
     try {
       const verifyResponse = await axios.post(
         "https://raulocoin.onrender.com/api/verify-totp-setup",
@@ -84,8 +86,10 @@ const VerifyAccount = () => {
         <Button
           type="primary"
           htmlType="submit"
-          className="auth-button1"
+          className="auth-button"
           disabled={loading}
+          style={{marginBottom: 15}}
+          
         >
           {loading ? "Cargando..." : "Verificar"}
         </Button>
@@ -94,7 +98,7 @@ const VerifyAccount = () => {
             to="/totp-setup"
             style={{ color: "inherit", textDecoration: "none" }}
           >
-            Activar TOTP
+            Recuperar TOTP
           </Link>
         </Button>
       </form>
