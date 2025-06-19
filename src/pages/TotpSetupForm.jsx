@@ -27,39 +27,55 @@ const TotpSetupForm = () => {
         textAlign: "center",
       }}
     >
-      <Title level={3}>Ingresá tus datos para generar TOTP</Title>
-      <Form layout="vertical" onFinish={onFinish}>
-        <Form.Item
-          label="Usuario"
-          name="username"
-          rules={[{ required: true, message: "Por favor ingresa el usuario" }]}
-        >
-          <Input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="ej: alejomartinez2420.alias"
-          />
-        </Form.Item>
+      <div className="login-container">
+        <img src="/assets/raulCoin.png" alt="raulCoin" className="logo-img" />
+        <h1 className="auth-title">Ingresá tus datos para generar TOTP</h1>
 
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[
-            { required: true, message: "Por favor ingresa el email" },
-            { type: "email", message: "Ingresa un email válido" },
-          ]}
-        >
-          <Input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="ej: alejomartinez2420@gmail.com"
-          />
-        </Form.Item>
+        <Form layout="vertical" onFinish={onFinish}>
+          <Form.Item
+            label="Usuario"
+            className="auth-title"
+            name="username"
+            rules={[
+              { required: true, message: "Por favor ingresa el usuario" },
+            ]}
+          >
+            <Input
+              value={username}
+              className="auth-input1"
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Alias"
+            />
+          </Form.Item>
 
-        <Button type="primary" htmlType="submit" loading={loading} block>
-          Generar código TOTP
-        </Button>
-      </Form>
+          <Form.Item
+            label="Email"
+            className="auth-title"
+            name="email"
+            rules={[
+              { required: true, message: "Por favor ingresa el email" },
+              { type: "email", message: "Ingresa un email válido" },
+            ]}
+          >
+            <Input
+              value={email}
+              className="auth-input1"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Correo electrónico"
+            />
+          </Form.Item>
+
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="auth-button"
+            loading={loading}
+            block
+          >
+            Generar código TOTP
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };

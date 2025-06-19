@@ -84,12 +84,12 @@ const VerifyAccount = () => {
         <Button
           type="primary"
           htmlType="submit"
-          className="auth-button"
+          className="auth-button1"
           disabled={loading}
         >
           {loading ? "Cargando..." : "Verificar"}
         </Button>
-        <Button type="primary">
+        <Button type="primary" htmlType="button" className="auth-button">
           <Link
             to="/totp-setup"
             style={{ color: "inherit", textDecoration: "none" }}
