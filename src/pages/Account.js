@@ -111,15 +111,17 @@ const Account = () => {
         <p className='saludo'>{user.username}</p>
       </div>
 
-      <Button type="primary" onClick={() => navigate('/edit-profile')} style={{ marginTop: 20 }}>
+      <Button type="primary" className='auth-button' onClick={() => navigate('/search-users')} style={{marginTop: 20}}>
+        Transferir
+      </Button>
+
+      <Button type="primary"  className='auth-button' onClick={() => navigate('/edit-profile')} style={{ marginTop: 20 }}>
   Editar Perfil
 </Button>
 
 
 
-      <Button type="primary" className='auth-button' onClick={() => navigate('/search-users')}>
-        Transferir
-      </Button>
+      
 
       <h2 style={{ marginTop: 30 }}>Mis Transferencias</h2>
 

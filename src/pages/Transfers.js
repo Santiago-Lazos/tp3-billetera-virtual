@@ -57,7 +57,6 @@ const Transfers = () => {
       <h2 className="auth-title">Mis Transferencias</h2>
 
       <Input
-        className="auth-input"
         placeholder="Filtrar por alias o descripción"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
@@ -65,7 +64,6 @@ const Transfers = () => {
       />
 
       <Select
-        className="auth-input"
         value={typeFilter}
         onChange={(value) => setTypeFilter(value)}
         style={{ width: '100%', marginBottom: 20 }}

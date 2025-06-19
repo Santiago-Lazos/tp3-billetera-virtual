@@ -75,7 +75,7 @@ const EditProfile = () => {
   };
 
   return (
-    <Card title="Editar Perfil" style={{ maxWidth: 400, margin: 'auto', marginTop: 50 }}>
+    <Card title={<div className="edit-profile-title">Editar Perfil</div>} className="edit-profile-card" style={{ maxWidth: 400, margin: 'auto', marginTop: 50 }}>
       <Form form={form} layout="vertical" onFinish={onFinish}>
         <Form.Item label="Nombre" name="name" rules={[{ max: 100, message: 'Máximo 100 caracteres.' }]}>
           <Input placeholder="Nombre completo" />
